@@ -24,11 +24,11 @@ public class AppController {
     public ResponseEntity showRandomGif() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now();
-        String yestarday = dtf.format(now.minusDays(1));
-        String twoDaysBefore = dtf.format(now.minusDays(2));
-        Double yestardayCurrency = openexchangeratesApi.readCurrency(yestarday, exchangeratesApp_id).getRates().get("RUB");
-        Double twoDaysBeforeCurrency = openexchangeratesApi.readCurrency(twoDaysBefore, exchangeratesApp_id).getRates().get("RUB");
-        String tag = yestardayCurrency > twoDaysBeforeCurrency ? "rich" : "broke";
+        String today = dtf.format(now);
+        String yesratrday = dtf.format(now.minusDays(1));
+        Double todayCurrency = openexchangeratesApi.readCurrency(today, exchangeratesApp_id).getRates().get("RUB");
+        Double yestardayCurrency = openexchangeratesApi.readCurrency(yesratrday, exchangeratesApp_id).getRates().get("RUB");
+        String tag = todayCurrency > yestardayCurrency ? "rich" : "broke";
         String url = giphyApi.getRandomGif(giphyApp_id, tag).getData().getUrl();
         return ResponseEntity.ok().body(String.format("<a href=\"%s\">%s</a>", url, tag));
     }
