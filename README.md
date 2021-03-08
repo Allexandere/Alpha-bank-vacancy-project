@@ -20,3 +20,6 @@ REST API гифок - https://developers.giphy.com/docs/api#quick-start-guide
 Результатом выполнения должен быть репо на GitHub с инструкцией по запуску
 Nice to Have
 Сборка и запуск Docker контейнера с этим сервисом
+
+
+## Комментарии по моему решению есть в README.pdf
